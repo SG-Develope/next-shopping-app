@@ -16,6 +16,7 @@ model User {
 
   orders    Order[]
   cart      Cart?
+  reviews   Review[]
 
   @@map("users")
 }
@@ -32,8 +33,23 @@ model Product {
 
   orderItems  OrderItem[]
   cartItems   CartItem[]
+  reviews     Review[]
 
   @@map("products")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  rating    Int
+  content   String
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
+
+  @@map("reviews")
 }
 
 model SystemCode {

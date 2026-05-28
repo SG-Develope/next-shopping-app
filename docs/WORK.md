@@ -46,6 +46,39 @@
 
 ## 구현 완료 내역
 
+### Day 11 — UI 전체 리디자인 + 상품 상세 리뷰 기능 (2026-05-28)
+
+#### Warm Spring 디자인 시스템 적용
+| 파일 | 설명 |
+| --- | --- |
+| `src/app/globals.css` | Coral 팔레트 CSS 변수 정의 및 shadcn 토큰 매핑 |
+| `src/components/Header.tsx` | Warm Spring 색상 + 우측 통합 네비게이션 |
+| `src/components/QuickNav.tsx` | 헤더 하단 카테고리 바로가기 가로 슬라이드 (신규) |
+| `src/components/SignOutButton.tsx` | Warm Spring 스타일 적용 |
+| `src/components/products/ProductCard.tsx` | Coral OFF 배지, 이미지 배경 크림색, 할인율 색상 |
+| `src/components/cart/CartItem.tsx` | Warm Spring 색상 적용 |
+| `src/components/cart/CartSummary.tsx` | Warm Spring 색상 + Coral 총금액 |
+| `src/app/page.tsx` | 히어로 배너 + 상품 바로 노출 (클릭 없이) |
+| `src/app/products/page.tsx` | 카테고리 이미지 슬라이더로 필터 버튼 교체 |
+| `src/app/cart/page.tsx` | Warm Spring 색상 적용 |
+| `src/app/(auth)/login/page.tsx` | Warm Spring 카드 디자인 |
+| `src/app/(auth)/register/page.tsx` | Warm Spring 카드 디자인 |
+
+#### 상품 상세 페이지 기능 강화
+| 파일 | 설명 |
+| --- | --- |
+| `prisma/schema.prisma` | `Review` 모델 추가 (rating / content / userId / productId) |
+| `src/actions/review.actions.ts` | `createReview` 서버 액션 (로그인 필수, revalidatePath) |
+| `src/components/products/QuantitySelector.tsx` | 수량 조절 + 총금액 실시간 표시 (신규) |
+| `src/components/products/ReviewForm.tsx` | 별점 클릭 선택 + 리뷰 텍스트 입력 (신규) |
+| `src/components/products/ReviewList.tsx` | 평균 평점 + 리뷰 목록 서버 렌더링 (신규) |
+| `src/components/products/AddToCartButton.tsx` | quantity prop 연동, Coral 스타일 |
+| `src/app/products/[id]/page.tsx` | 전체 레이아웃 재조립 (수량·가격·리뷰 섹션) |
+
+**DB 작업**: 로컬 DB `prisma migrate reset` 후 재마이그레이션 + seed 재실행
+
+---
+
 ### Day 8 — 관리자 상품 등록 기능 (2026-05-27)
 
 | 파일 | 설명 |
